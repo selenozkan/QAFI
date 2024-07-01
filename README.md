@@ -87,6 +87,7 @@ Below is an explanation of the key configuration parameters, followed by a link 
 
 - **BUILD MSA**
   - Determines whether a MSA should be constructed for the protein of interest. Parameters such as `numIter`, `evalue`, `minSeqIden`, and `muscleAlg` control the specifics of the MSA process, including the number of iterations, alignment similarity thresholds (E-value and minimum sequence identity), and the path to the MUSCLE alignment tool.
+  - *Note: In the msa.py file, ensure that the correct path for the temporary file (tmpFile) is specified before running the script. For example, make sure the path '/Desktop/tmp.fa' in the buildMsaMuscle function matches your system configuration to avoid any file path errors during execution.*
 
 - **Modelling Neutral Variants from MSA**
   - Specifies parameters `idmin` and `idmax`, defining the range of sequence identities used when modeling neutral variants from the MSA.
