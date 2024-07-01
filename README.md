@@ -91,7 +91,7 @@ Below is an explanation of the key configuration parameters, followed by a link 
 - **Modelling Neutral Variants from MSA**
   - Specifies parameters `idmin` and `idmax`, defining the range of sequence identities used when modeling neutral variants from the MSA.
  
-For instructions on configuring and running the script, refer to the sample configuration file available [here](/path/to/config).
+For instructions on configuring and running the script, refer to the sample configuration file available [here](demo/Q9Y375.config).
 
 ### Requirements for Calculating Structure-Based Features:
 
