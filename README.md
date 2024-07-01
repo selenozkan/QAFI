@@ -50,13 +50,13 @@ All models developed in this study incorporate 14 features: 5 sequence-based and
 Three sequence-based features (Blosum62, PSSM, Shannon's entropy) can be retrieved using the `PatMut.py` pipeline.
 - *Note: Credits for the development of this pipeline go to Natàlia Padilla.*
 
-To run the `PatMut.py` pipeline, first the following databases must be installed:
+Before running the `PatMut.py` pipeline, the following databases must be installed:
 
 - **BLAST**: For protein sequence alignment. Download and install BLAST from [NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download).
 - **MUSCLE**: For multiple sequence alignment. Download and install MUSCLE from [MUSCLE](https://drive5.com/muscle5/).
 - **UniRef Database**: For retrieving protein sequences. Download the 2016 UniRef database from [UniProt](https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2016_07/uniref/). We are updating to use the newest UniRef database but...
 
-The `PatMut.py` pipeline is designed for the detailed analysis of protein variants. It begins by configuring settings specified in the `config.py` file and proceeds through several key stages. First, it builds a Multiple Sequence Alignment (MSA) using BLAST and MUSCLE if enabled. The script then parses variants from the MSA and retrieves all specified variants, categorizing them as pathological, neutral, or predicted mutations. Next, it calculates the desired sequence-based features by the user. Finally, PatMut.py writes analysis results to the specified output directory.
+This pipeline is designed for the detailed analysis of protein variants. It begins by configuring settings specified in the `config.py` file and proceeds through several key stages. First, it builds a Multiple Sequence Alignment (MSA) using BLAST and MUSCLE if enabled. The script then parses variants from the MSA and retrieves all specified variants, categorizing them as pathological, neutral, or predicted mutations. Next, it calculates the desired sequence-based features by the user. Finally, `PatMut.py` writes analysis results to the specified output directory.
 
 Below is an explanation of the key configuration parameters, followed by a link to a sample configuration file in this repository.
 
