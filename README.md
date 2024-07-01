@@ -93,6 +93,11 @@ Below is an explanation of the key configuration parameters, followed by a link 
  
 For instructions on configuring and running the script, refer to the sample configuration file available [here](demo/Q9Y375.config).
 
+To execute the `PatMut.py` pipeline with the configuration file, use the following command: 
+```
+python3 PatMut.py /path/to/Q9Y375.config
+```
+
 ### Requirements for Calculating Structure-Based Features:
 
 - **AlphaFold Structure** for the protein of interest (.mmCIF file format):
