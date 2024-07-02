@@ -47,8 +47,8 @@ All models developed in this study incorporate 14 features: 5 sequence-based and
 
 ### Requirements for Calculating Sequence-Based Features:
 
-- ***Three sequence-based features (Blosum62, PSSM, Shannon's entropy)*** (.arff format):
-    - The three sequence/MSA based features can be retrieved using the `PatMut.py` pipeline developed by Natàlia Padilla. For a detailed description of this pipeline, of  refer [here] (https://github.com/NataliaSirera/patmut).
+- **Three sequence-based features (Blosum62, PSSM, Shannon's entropy)** (.arff format):
+    - The three sequence/MSA based features can be retrieved using the `PatMut.py` pipeline developed by Natàlia Padilla. For a detailed description of this pipeline, please refer [here](https://github.com/NataliaSirera/patmut).
     - The output of this script, ARFF file, includes a list of features for the variants of the protein (.arff file format). An example output can be found [here](/demo/Q9Y375.arff).
      
 ### Requirements for Calculating Structure-Based Features:
