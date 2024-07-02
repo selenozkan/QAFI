@@ -50,6 +50,11 @@ The notebook `Features.ipynb` includes a pipeline for obtaining all 14 features 
 
 - **Three sequence-based features (Blosum62, PSSM, Shannon's entropy)** (.ARFF format):
     - The three sequence/MSA based features can be retrieved using the `PatMut.py` pipeline that is explained with a detailed description [here](https://github.com/NataliaSirera/patmut).
+
+    - An example to execute the PatMut script is given below:
+     ```sh
+    python bin/PatMut.py demo/Q9Y375.config
+    ```
     - The output of this script, ARFF file, includes a list of features for the variants of the protein. An example output can be found [here](/demo/Q9Y375.arff).
  
 - Neco feature
