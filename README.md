@@ -23,9 +23,10 @@ The notebook `ProteinSpecificPredictors.ipynb` includes all analyses related to 
 The normalized DMS assays and the features used can be found in `data/Dataset_30proteins_features.csv`
 
 ---
-# **Obtaining Features for a Protein of Interest**
+# Obtaining Features for a Protein of Interest
 
-All models developed in this study incorporate 14 features: 5 sequence-based and 9 structure-based.
+The notebook `Features.ipynb` includes a pipeline for obtaining all 14 features step-by-step for a given protein of interest. All models developed in this study incorporate 14 features: 5 sequence-based and 9 structure-based.
+
 
 ## Sequence-Based Features:
 - Blosum62
@@ -47,31 +48,53 @@ All models developed in this study incorporate 14 features: 5 sequence-based and
 
 ### Requirements for Calculating Sequence-Based Features:
 
-- **Three sequence-based features (Blosum62, PSSM, Shannon's entropy)** (.arff format):
-    - The three sequence/MSA based features can be retrieved using the `PatMut.py` pipeline developed by Natàlia Padilla. For a detailed description of this pipeline, please refer [here](https://github.com/NataliaSirera/patmut).
-    - The output of this script, ARFF file, includes a list of features for the variants of the protein (.arff file format). An example output can be found [here](/demo/Q9Y375.arff).
+- **Three sequence-based features (Blosum62, PSSM, Shannon's entropy)** (.ARFF format):
+    - The three sequence/MSA based features can be retrieved using the `PatMut.py` pipeline that is explained with a detailed description [here](https://github.com/NataliaSirera/patmut).
+    - The output of this script, ARFF file, includes a list of features for the variants of the protein. An example output can be found [here](/demo/Q9Y375.arff).
+ 
+- Neco feature
+    - `feature_neco.csv` available in `QAFI/data` folder
+    - Please refer to our QAFI paper to follow how this dataframe was curated
+    - Credits for the calculation of this feature: [Natàlia Padilla Sirera](https://github.com/NataliaSirera)
+
      
 ### Requirements for Calculating Structure-Based Features:
 
-- **AlphaFold Structure** for the protein of interest (.mmCIF file format):
-    - The structure can be downloaded from [AlphaFold](https://alphafold.ebi.ac.uk)
-    - Refer to:
-        - Jumper, J. et al. (2021). Highly accurate protein structure prediction with AlphaFold. *Nature*, 596(7873), 583-589.
+- **Colasi feature**:
+    - **AlphaFold Structure** for the protein of interest (.mmCIF file format):
+        - The structure can be downloaded from [AlphaFold](https://alphafold.ebi.ac.uk)
+        - Refer to:
+            - Jumper, J. et al. (2021). Highly accurate protein structure prediction with AlphaFold. *Nature*, 596(7873), 583-589.
 
-        - Varadi, M. et al. (2024). AlphaFold Protein Structure Database in 2024: providing structure coverage for over 214 million protein sequences. *Nucleic acids research*, 52(D1), D368-D375.
+            - Varadi, M. et al. (2024). AlphaFold Protein Structure Database in 2024: providing structure coverage for over 214 million protein sequences. *Nucleic acids research*, 52(D1), D368-D375.
 
 
-- **Atomic Interactions within Protein Structures** (.json file format):
-    - Follow the instructions provided at [Arpeggio GitHub](https://github.com/PDBeurope/arpeggio) to generate the necessary JSON file containing all atomic contacts.
-    - Refer to:
-        - Jubb HC et al. (2017) Arpeggio: A Web Server for Calculating and Visualising Interatomic Interactions in Protein Structures. *J Mol Biol* 429:365–371.
+    - **Atomic Interactions within Protein Structures** (.json file format):
+        - Follow the instructions provided at [Arpeggio GitHub](https://github.com/PDBeurope/arpeggio) to generate the necessary JSON file containing all atomic contacts.
+        - Refer to: Jubb HC et al. (2017) Arpeggio: A Web Server for Calculating and Visualising Interatomic Interactions in Protein Structures. *J Mol Biol* 429:365–371.
+              
+    - Maximum number of contacts file
+        - `MAX_COUNTS.csv` available in `QAFI/data` folder
+        - The maximum number of interatomic contacts observed for the native residue’s type in a well-curated dataset of 593 experimental protein structures, list of structures selected from PISCES. For all pdb structures, atomic contacts are obtained, counted and maximum number of contact for each residue is stored in the "maximum_counts.csv" file.
+        - For the source of selected experimental protein structures refer to: Wang G, Dunbrack RL (2003) PISCES: A protein sequence culling server. Bioinformatics 19:1589–1591
 
-The notebook `Features.ipynb` includes a pipeline for obtaining all 14 features step-by-step for a given protein of interest.
-
+- **MJ potential feature**
+    - `MJ_POTENTIAL_TABLE3.csv` available in `QAFI/data` folder
+    - To calculate the difference in contact energies between the sums of native-neighbour and mutant-neighbour interactions, we used the upper triangle of the 20x20 table provided by Miyazawa and Jernigan (1996).
+    - Refer to: Miyazawa S, Jernigan RL (1996) Residue-Residue Potentials with a Favorable Contact Pair Term and an Unfavorable High Packing Density Term, for Simulation and Threading. J Mol Biol 256:623–644.
+      
+- **Laar feature**
+    - `feature_laar.csv` available in `QAFI/data` folder
+    - Please refer to our QAFI paper to follow how this dataframe was curated
+    - Credits for the calculation of this feature: [Natàlia Padilla Sirera](https://github.com/NataliaSirera)
+  
 ---
 # **Predictions with QAFI for a Protein of Interest**
 
 The `Predictions_with_QAFI.ipynb` notebook includes a pipeline for obtaining predictions for a protein of interest, provided all its features are obtained.
+
+QAFI predictions for 3460 proteins (those proteins in ClinVar with at least one pathogenic variant) can be found in `data/QAFI_predictions.csv.zip`
+
 
 ---
 
