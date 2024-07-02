@@ -50,54 +50,9 @@ All models developed in this study incorporate 14 features: 5 sequence-based and
 Three sequence-based features (Blosum62, PSSM, Shannon's entropy) can be retrieved using the `PatMut.py` pipeline.
 - *Note: Credits for the development of this pipeline go to Natàlia Padilla.*
 
-Before running the `PatMut.py` pipeline, the following databases must be installed:
-
-- **BLAST**: For protein sequence alignment. Download and install BLAST from [NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download).
-- **MUSCLE**: For multiple sequence alignment. Download and install MUSCLE from [MUSCLE](https://drive5.com/muscle5/).
-- **UniRef Database**: For retrieving protein sequences. Download the 2016 UniRef database from [UniProt](https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2016_07/uniref/). We are updating to use the newest UniRef database but...
-
-This pipeline is designed for the detailed analysis of protein variants. It begins by configuring settings specified in the `config.py` file and proceeds through several key stages. First, it builds a Multiple Sequence Alignment (MSA) using BLAST and MUSCLE if enabled. The script then parses variants from the MSA and retrieves all specified variants, categorizing them as pathological, neutral, or predicted mutations. Next, it calculates the desired sequence-based features by the user. Finally, `PatMut.py` writes analysis results to the specified output directory.
-
-Below is an explanation of the key configuration parameters, followed by a link to a sample configuration file in this repository.
-
-#### Configuration Parameters:
-
-- **QUERY**
-  - `uniprotID`: The UniProt identifier specific to the protein being analyzed. This parameter must be updated each time the analysis is conducted on a different protein.
-  - `blastPath`: Directory path where the BLAST executable is located on the system.
-  - `blastProtDB`: Location of the BLAST protein database file used for sequence similarity searches. Ensure this database (makeblastdb) is created using the UniRef 2016 database.
-
-- **RESULTS**
-  - `output`: Directory path where all results will be saved. 
-  - `write`: Format(s) in which results will be saved. Supported formats include:
-    - `MSA`: Generated in FASTA format (Q9Y375.msa).
-    - `NeutresMSAID`: This format (Q9Y375.neutresMSA) provides a list of neutral mutations identified during the analysis, along with their associated sequence identifiers.
-    - `ARFF`: Used for machine learning tasks, the ARFF file (Q9Y375.arff) includes attribute data derived from the user-configured features computed during the analysis. The tag attribute assigns a label (1 for pathological, 0 for neutral) to each variant based on its predicted impact.
-
-- **MUTATION SET**
-  - `pathological`: Source database for pathological mutations, sourced from the Humsavar database.
-  - `neutral`: Method for identifying neutral mutations. This involves building a MSA (msaBuild option in the config file) to compare mutations across homologous sequences.
-  - `predicting`: Mode for predicting mutations.
-
-- **PROPERTIES**
-  - Refer to the features calculated during the analysis and included in the output files.
-
-- **DATABASES**
-  - Paths to various supporting database files used in the analysis. The Humsavar database can be downloaded from [UniProt](https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/humsavar.txt). The remaining databases are located in the metadata folder.
-
-- **BUILD MSA**
-  - Determines whether a MSA should be constructed for the protein of interest. Parameters such as `numIter`, `evalue`, `minSeqIden`, and `muscleAlg` control the specifics of the MSA process, including the number of iterations, alignment similarity thresholds (E-value and minimum sequence identity), and the path to the MUSCLE alignment tool.
-  - *Note: In the msa.py file, ensure that the correct path for the temporary file (tmpFile) is specified before running the script. For example, make sure the path '/Desktop/tmp.fa' in the buildMsaMuscle function matches your system configuration to avoid any file path errors during execution.*
-
-- **Modelling Neutral Variants from MSA**
-  - Specifies parameters `idmin` and `idmax`, defining the range of sequence identities used when modeling neutral variants from the MSA.
- 
-For instructions on configuring and running the script, refer to the sample configuration file available [here](demo/Q9Y375.config).
-
-To execute the `PatMut.py` pipeline with the configuration file, use the following command: 
-```
-python3 PatMut.py /path/to/Q9Y375.config
-```
+- After running the pipeline, the file of interest is the **ARFF file**, which contains the sequence-based features for the protein variants.
+    - For a detailed understanding of `PatMut.py`, refer to [Natalia's repository](https://github.com/NataliaSirera/patmut).
+        - The ARFF file includes a list of features for the variants of the protein in ARFF format. You can see an example [here](/demo/Q9Y375.arff).
 
 ### Requirements for Calculating Structure-Based Features:
 
