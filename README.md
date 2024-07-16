@@ -96,7 +96,7 @@ The notebook `Features.ipynb` includes a pipeline for obtaining all 14 features 
 ---
 # **Predictions with QAFI for a Protein of Interest**
 
-The `Predictions_with_QAFI.ipynb` notebook includes a pipeline for obtaining predictions for a protein of interest, provided all its features are obtained.
+The `Predictions_with_QAFI.ipynb` notebook includes a pipeline for obtaining predictions for a protein of interest, for which all 14 features are already obtained.
 
 QAFI predictions for 3460 proteins can be found in `output/QAFI_predictions/all` folder
 
