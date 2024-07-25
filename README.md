@@ -108,7 +108,7 @@ QAFI predictions for 3460 proteins can be found in `output/QAFI_predictions/all`
 ## Reference
 
 In case of using the QAFI predictor in your work, please use the following citation:
-Selen Ozkan, Natàlia Padilla, Xavier de la Cruz et al. QAFI: A Novel Method for Quantitative Estimation of Missense Variant Impact Using Protein-Specific Predictors and Ensemble Learning, 07 May 2024, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-4348948/v1]
+Ozkan, S., Padilla, N. & de la Cruz, X. QAFI: a novel method for quantitative estimation of missense variant impact using protein-specific predictors and ensemble learning. Hum. Genet. (2024). [https://doi.org/10.1007/s00439-024-02692-z]
 
 ---
 
